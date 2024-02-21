@@ -1,0 +1,19 @@
+apiVersion: db.atlasgo.io/v1alpha1
+kind: AtlasMigration
+metadata:
+  name: migration
+spec:
+  urlFrom:
+    secretKeyRef:
+      key: url
+      name: postgres-credentials
+  cloud:
+    project: "atlasdemo" # Atlas Cloud project name
+    tokenFrom:
+      secretKeyRef:
+        name: atlas-credentials
+        key: token
+  dir:
+    remote:
+      name: "atlasdemo" # Migration directory name in your atlas cloud project
+      tag: "15ad339912fd8466234f775aae44f170fed7e96e" # this is obtained from tags in atlas.
